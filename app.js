@@ -15,7 +15,7 @@ function onRequest(request, response) {
   response.setHeader("Content-Type","application/json");
   response.setHeader("Access-Control-Allow-Origin","*");
 
-  //
+  //handle general error
   request.on('error',function(err){
     console.error(err);
   });
