@@ -1,0 +1,19 @@
+{
+  "name": "coding-challenge",
+  "version": "1.0.0",
+  "description": "Coding Challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "Node"
+  ],
+  "author": "Sanjeet Kanwar",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.2.0"
+  }
+}
