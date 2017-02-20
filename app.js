@@ -4,7 +4,7 @@
 var parseData = require("./parser");
 
 /*
-* the main function that runs on each request.
+* runs on each request.
 * no routes has been defined.
 */
 function onRequest(request, response) {
@@ -32,10 +32,16 @@ function onRequest(request, response) {
     }
   });
 
+  /*
+  * check if dataArr is not empty and call parseData
+  * send 400 error if length is 0
+  */
   request.on("end",function() {
-    if (dataArr.length) {
-      response.writeHead(200);
-      response.end(JSON.stringify(parseData(dataArr)));
+    if (dataArr !== undefined) {
+      if(dataArr.length) {
+        response.writeHead(200);
+        response.end(JSON.stringify(parseData(dataArr)));
+      }
     } else {
       response.writeHead(400);
       response.end(JSON.stringify({"error": "Could not decode request: JSON parsing failed"}));
