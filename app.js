@@ -27,6 +27,9 @@ function onRequest(request, response) {
   request.on('data',function(data) {
     try {
       dataArr = JSON.parse(data.toString()).payload;
+      // if accidentally data is set to undefined change it back to an empty array
+      if(dataArr === undefined)
+        dataArr = [];
     } catch(err) {
       console.error("invalid json request");
     }
@@ -37,12 +40,11 @@ function onRequest(request, response) {
   * send 400 error if length is 0
   */
   request.on("end",function() {
-    if (dataArr !== undefined) {
-      if(dataArr.length) {
-        response.writeHead(200);
-        response.end(JSON.stringify(parseData(dataArr)));
-      }
-    } else {
+    if(dataArr.length) {
+      response.writeHead(200);
+      response.end(JSON.stringify(parseData(dataArr)));
+    }
+    else {
       response.writeHead(400);
       response.end(JSON.stringify({"error": "Could not decode request: JSON parsing failed"}));
     }
