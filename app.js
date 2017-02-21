@@ -27,7 +27,7 @@ function onRequest(request, response) {
   request.on('data',function(data) {
     try {
       dataArr = JSON.parse(data.toString()).payload;
-      console.log(data.toString);
+      console.log(data);
       // if accidentally data is set to undefined change it back to an empty array
       if(dataArr === undefined)
         dataArr = [];
