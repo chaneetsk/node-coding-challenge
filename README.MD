@@ -27,6 +27,3 @@ GET request generates a response of 400 Bad Request
 ####Test
 
     $ npm test
-
-####License
-MIT
